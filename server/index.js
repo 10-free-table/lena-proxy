@@ -10,13 +10,13 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static('public'))
+app.use('/:id', express.static('public'))
 
 app.get('/', (req, res) => {
     // console.log(“http://localhost:1128/hotels/” + req.params.hotelId + “/”);
     // res.send(req.params.hotelId);
     axios
-        .get('http://localhost:3001/reservation')
+        .get('http://localhost:3001/')
         .then(response => {
             res.send(response.data);
         })
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 app.get('/', (req, res) => {
     axios
-        .get('http://localhost:3002/1')
+        .get('http://localhost:3002/:id')
         .then(response => {
             res.send(response.data);
         })
