@@ -12,33 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/:id', express.static('public'))
 
-app.get('/', (req, res) => {
-    // console.log(“http://localhost:1128/hotels/” + req.params.hotelId + “/”);
-    // res.send(req.params.hotelId);
-    axios
-        .get('http://localhost:3001/')
-        .then(response => {
-            res.send(response.data);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-});
-
-app.get('/', (req, res) => {
-    axios
-        .get('http://localhost:3002/:id')
-        .then(response => {
-            res.send(response.data);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-});
-
-app.get('/', (req, res) => {
-    axios
-        .get('http://localhost:3003')
+app.get('/:pagenum', (req, res) => {
+    axios.get('http://18.191.29.48:3002/' + req.params.pagenum)
         .then(response => {
             res.send(response.data);
         })
