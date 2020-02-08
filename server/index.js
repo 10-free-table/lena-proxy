@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/:id', express.static('public'))
 
 app.get('/:pagenum', (req, res) => {
-    axios.get('http://18.191.29.48:3002/' + req.params.pagenum)
+    axios.get('http://18.223.170.195/:3002/' + req.params.pagenum)
         .then(response => {
             res.send(response.data);
         })
